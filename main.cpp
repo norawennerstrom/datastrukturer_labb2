@@ -1,6 +1,9 @@
 #include <iostream>
 #include "sort.h"
 
+// TODO: gillar inte [0]-syntax
+// TODO: måste man kopiera kod för med-of-three?
+
 int main() {
     // test
     std::vector<int> v = {1, 6, 3, 8, 1, 2, 6};

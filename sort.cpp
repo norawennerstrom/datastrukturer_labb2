@@ -2,6 +2,7 @@
 // Created by Nora Wennerström on 2024-05-06.
 //
 
+#include <cmath>
 #include "sort.h"
 
 void insertion_sort(intIt begin, intIt end) {
@@ -47,11 +48,11 @@ void quicksort(intIt begin, intIt end) {
     }
 }
 
-void median_of_three(intIt begin, intIt end) {
+void median_of_three(intIt begin, intIt end) { // TODO: ?????
     if(begin < end - 1) {
         auto p = med_of_three_partition(begin, end);
-        quicksort(begin, p);
-        quicksort(p, end);
+        median_of_three(begin, p);
+        median_of_three(p, end);
     }
 }
 
@@ -71,10 +72,10 @@ intIt partition(intIt begin, intIt end) {
 
 intIt med_of_three_partition(intIt begin, intIt end) {
 
-    auto mid = begin + std::distance(begin, end)/2;
-    if(mid[0] < begin[0]) {std::swap(begin, mid);}
-    if((end-1)[0] < begin[0]) {std::swap(begin, end);}
-    if(mid[0] < (end-1)[0]) {std::swap(mid, end);}
+    auto mid = begin + std::floor(std::distance(begin, end)/2);
+    if(mid[0] < begin[0]) {std::swap(begin[0], mid[0]);}
+    if((end-1)[0] < begin[0]) {std::swap(begin[0], (end-1)[0]);}
+    if(mid[0] < (end-1)[0]) {std::swap(mid[0], (end-1)[0]);}
 
     int pivot = (end - 1)[0];
 
